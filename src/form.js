@@ -1,0 +1,18 @@
+class Form {
+    constructor() {
+        this.elements = {};
+        this.elements.form = document.getElementById('js-form');
+        this.elements.input = document.getElementById('js-search');
+    }
+
+    bindSubmit(callback) {
+        const input = this.elements.input;
+
+        this.elements.form.addEventListener('submit', e => {
+            e.preventDefault();
+            callback(input.value);
+        });
+    }
+}
+
+export default Form;

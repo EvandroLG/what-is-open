@@ -1,4 +1,4 @@
-class Main {
+class Places {
     constructor() {
         this.coords = {
             lat: null,
@@ -10,12 +10,14 @@ class Main {
         this.elements.list = document.getElementById('js-list');
     }
 
-    _searchByPlaces(callback) {
+    _searchByPlaces(query, callback) {
         const request = {
             location: {
                 lat: this.coords.lat,
                 lng: this.coords.lng
             },
+
+            keyword: query,
 
             fields: [
                 'photos', 'formatted_address', 'name',
@@ -33,6 +35,8 @@ class Main {
         if (!datas.length) {
             return '';
         }
+
+        console.log(datas);
 
         return `
             <ul>
@@ -53,8 +57,8 @@ class Main {
         this.elements.list.innerHTML = html;
     }
 
-    searchByOpenPlaces() {
-        this._searchByPlaces((results, status) => {
+    searchByOpenPlaces(query) {
+        this._searchByPlaces(query, (results, status) => {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
                 return;
             }
@@ -79,4 +83,4 @@ class Main {
     }
 }
 
-export default Main;
+export default Places;
