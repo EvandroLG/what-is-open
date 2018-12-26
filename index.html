@@ -6,15 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>What is open?</title>
         <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&libraries=places"></script>
+        <link rel="stylesheet" type="text/css" href="dist/index.css">
     </head>
     <body>
         <form action="" id="js-form">
             <input type="text"
+                   class="search"
                    placeholder="Search for places"
                    id="js-search"
             >
         </form>
-        <div id="js-list"></div>
+
+        <div id="js-list"
+             class="list"
+        >
+        </div>
+
         <script src="dist/index.js"></script>
     </body>
 </html>

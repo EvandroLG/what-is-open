@@ -36,18 +36,25 @@ class Places {
             return '';
         }
 
-        console.log(datas);
+        console.log(datas[0]);
 
         return `
             <ul>
             ${
                 datas.map(data => {
                     return `
-                        <li>
-                            <h2>${data.name}</h2>
+                        <li class="list__item">
+                            <h2 style="background-image: url(${data.icon})"
+                                class="list__name"
+                            >
+                                ${data.name}
+                            </h2>
+                            <span class="list__address">
+                                ${data.vicinity}
+                            </span>
                         </li>        
-                    `
-                })
+                    `;
+                }).join('')
             }
             </ul>
         `;
