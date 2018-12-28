@@ -1,7 +1,7 @@
 {
     "scripts": {
         "start": "python -m SimpleHTTPServer 9000",
-        "build-html": "node build.js",
+        "build-html": "node build-html.js",
         "watch": "node_modules/webpack/bin/webpack.js -d --watch"
     },
     "dependencies": {
