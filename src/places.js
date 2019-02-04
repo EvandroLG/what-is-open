@@ -36,8 +36,6 @@ export default class Places {
             return '';
         }
 
-        console.log(datas[0]);
-
         return `
             <ul>
             ${
