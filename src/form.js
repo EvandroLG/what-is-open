@@ -1,4 +1,6 @@
-class Form {
+import debounce from './debounce';
+
+export default class Form {
     constructor() {
         this.elements = {};
         this.elements.form = document.getElementById('js-form');
@@ -8,11 +10,9 @@ class Form {
     bindSubmit(callback) {
         const input = this.elements.input;
 
-        this.elements.form.addEventListener('submit', e => {
+        this.elements.form.addEventListener('keyup', debounce((e) => {
             e.preventDefault();
             callback(input.value);
-        });
+        }, 600));
     }
 }
-
-export default Form;
