@@ -1,14 +1,7 @@
 {
-    "scripts": {
-        "start": "pushd dist/; python -m SimpleHTTPServer 9000",
-        "build-html": "node_modules/node-simple-template/index.js -f index.html -c config.json -d dist/",
-        "watch": "node_modules/webpack/bin/webpack.js -d --watch"
-    },
-    "dependencies": {
-        "webpack": "^4.28.2",
-        "webpack-cli": "^3.1.2"
-    },
     "devDependencies": {
+        "webpack": "^4.28.2",
+        "webpack-cli": "^3.1.2",
         "node-simple-template": "^1.0.2"
     }
 }
