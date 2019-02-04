@@ -1,4 +1,4 @@
-class Places {
+export default class Places {
     constructor() {
         this.coords = {
             lat: null,
@@ -89,5 +89,3 @@ class Places {
         });
     }
 }
-
-export default Places;
