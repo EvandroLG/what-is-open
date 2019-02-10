@@ -3,7 +3,7 @@ export default (callback, wait) => {
 
     return (...args) => {
         const context = this;
-        clearTimeout(timeout); 
+        clearTimeout(timeout);
         timeout = setTimeout(() => callback.apply(context, args), wait);
     }
 }

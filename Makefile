@@ -1,5 +1,6 @@
 template := node_modules/node-simple-template/index.js
 webpack := node_modules/webpack/bin/webpack.js
+jest := node_modules/jest/bin/jest.js
 
 .SILENT:
 
@@ -16,6 +17,9 @@ dist/index.js: src/index.js
 
 watch:
 	$(webpack) -d --watch
+
+test:
+	$(jest)
 
 run:
 	pushd dist/; python -m SimpleHTTPServer 9000
