@@ -1,4 +1,4 @@
-it dtemplate := node_modules/node-simple-template/index.js
+template := node_modules/node-simple-template/index.js
 jest := node_modules/jest/bin/jest.js
 babel := ./node_modules/.bin/babel
 src_files := $(shell find src/ -name '*.js')
