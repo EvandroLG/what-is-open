@@ -1,10 +1,12 @@
-template := node_modules/node-simple-template/index.js
-webpack := node_modules/webpack/bin/webpack.js
+it dtemplate := node_modules/node-simple-template/index.js
 jest := node_modules/jest/bin/jest.js
+babel := ./node_modules/.bin/babel
+src_files := $(shell find src/ -name '*.js')
+transpiled_files := $(patsubst src/%,dist/%,$(src_files))
 
 .SILENT:
 
-all: node_modules dist/index.html dist/index.js run
+all: node_modules dist/index.html $(transpiled_files) run
 
 node_modules: package.json package-lock.json
 	npm install
@@ -12,11 +14,8 @@ node_modules: package.json package-lock.json
 dist/index.html: index.html
 	$(template) -f index.html -c config.json -d dist/
 
-dist/index.js: src/index.js
-	$(webpack)
-
-watch:
-	$(webpack) -d --watch
+dist/%: src/%
+	$(babel) $< --out-file $@ --source-maps
 
 test:
 	$(jest)
