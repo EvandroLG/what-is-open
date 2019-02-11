@@ -28,7 +28,7 @@ export default class Places {
             radius: '20000',
         };
 
-        this.placesServices.nearbySearch(request, callback); 
+        this.placesServices.nearbySearch(request, callback);
     }
 
     render(datas) {
@@ -50,7 +50,7 @@ export default class Places {
                             <span class="list__address">
                                 ${data.vicinity}
                             </span>
-                        </li>        
+                        </li>
                     `;
                 }).join('')
             }
