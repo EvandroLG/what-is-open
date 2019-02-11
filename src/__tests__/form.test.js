@@ -26,11 +26,10 @@ describe('form', () => {
         form.bindSubmit(callback);
 
         const e = new KeyboardEvent('keyup');
-
         document.getElementById('js-form').dispatchEvent(e);
 
-        expect(debounce).toHaveBeenCalled();
-        expect(callback).toHaveBeenCalled();
+        expect(debounce).toHaveBeenCalledTimes(1);
+        expect(callback).toHaveBeenCalledTimes(1);
         expect(callback).toHaveBeenCalledWith('a');
     });
 });
