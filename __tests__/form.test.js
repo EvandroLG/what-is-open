@@ -1,7 +1,7 @@
-import Form from '../form';
-import debounce from '../debounce';
+import Form from '../src/form';
+import debounce from '../src/debounce';
 
-jest.mock('../debounce');
+jest.mock('../src/debounce');
 
 describe('form', () => {
     document.body.innerHTML = `
