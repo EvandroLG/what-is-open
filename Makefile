@@ -9,6 +9,9 @@ transpiled_files := $(patsubst src/%,dist/%,$(src_files))
 
 all: node_modules dist/index.html $(transpiled_files) run
 
+clean:
+	rm -rf dist/*.js dist/*.map
+
 node_modules: package.json package-lock.json
 	npm install
 
