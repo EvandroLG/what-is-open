@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`places should not render anything when api status was different than ok 1`] = `
+exports[`places render should render properly when api has datas to return 1`] = `
 "
             <ul>
             

@@ -24,21 +24,45 @@ describe('places', () => {
         });
     });
 
-    it('should render properly when api has datas to return', () => {
-        document.body.innerHTML = '<div id="js-list"></div>';
-        const places = new Places();
-        const services = places.placesServices;
+    describe('render', () => {
+        let list;
 
-        services.nearbySearch.mockImplementation((request, fn) => {
-            fn(fixture, 'OK');
+        function verifyRender(statusApi, expectedResult=true) {
+            const places = new Places();
+            const services = places.placesServices;
+
+            services.nearbySearch.mockImplementation((request, fn) => {
+                fn(fixture, statusApi);
+            });
+
+            places.searchByOpenPlaces('restaurant');
+
+            const html = list.innerHTML;
+
+            if (expectedResult) {
+                expect(html).toMatchSnapshot();
+            } else {
+                expect(html).toBe('');
+            }
+        }
+
+        beforeEach(() => {
+            list = document.getElementById('js-list');
+
+            if (!list) {
+                document.body.innerHTML = '<div id="js-list"></div>';
+                list = document.getElementById('js-list');
+            } else {
+                list.innerHTML = '';
+            }
         });
 
-        google.maps.places.PlacesServiceStatus.OK = 'OK';
+        it('should render properly when api has datas to return', () => {
+            verifyRender('OK');
+        });
 
-        places.searchByOpenPlaces('restaurant');
-
-        const html = document.getElementById('js-list').innerHTML;
-
-        expect(html).toMatchSnapshot();
+        it('should not render anything when api does not have datas to return', () => {
+            verifyRender('ERROR', false);
+        });
     });
 });

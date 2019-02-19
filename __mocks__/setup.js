@@ -1,7 +1,9 @@
 global.google = {
     maps: {
         places: {
-            PlacesServiceStatus: {},
+            PlacesServiceStatus: {
+                OK: 'OK',
+            },
 
             PlacesService: jest.fn().mockImplementation(() => {
                 return {
@@ -11,7 +13,7 @@ global.google = {
 
             RankBy: {
                 PROMINENCE: 'PROMINENCE'
-            }
+            },
         },
     },
 };
