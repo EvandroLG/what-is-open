@@ -1,3 +1,4 @@
+import fixture from '../__mocks__/restaurants';
 import Places from '../src/places';
 
 describe('places', () => {
@@ -11,7 +12,7 @@ describe('places', () => {
         };
 
         geo.getCurrentPosition.mockImplementation(fn => {
-            fn(mockData); 
+            fn(mockData);
         });
 
         const places = new Places();
@@ -21,5 +22,23 @@ describe('places', () => {
             expect(places.coords.lng).toEqual(longitude);
             next();
         });
+    });
+
+    it('should render properly when api has datas to return', () => {
+        document.body.innerHTML = '<div id="js-list"></div>';
+        const places = new Places();
+        const services = places.placesServices;
+
+        services.nearbySearch.mockImplementation((request, fn) => {
+            fn(fixture, 'OK');
+        });
+
+        google.maps.places.PlacesServiceStatus.OK = 'OK';
+
+        places.searchByOpenPlaces('restaurant');
+
+        const html = document.getElementById('js-list').innerHTML;
+
+        expect(html).toMatchSnapshot();
     });
 });

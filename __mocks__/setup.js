@@ -1,11 +1,21 @@
 global.google = {
     maps: {
         places: {
-            PlacesService: jest.fn(),
+            PlacesServiceStatus: {},
+
+            PlacesService: jest.fn().mockImplementation(() => {
+                return {
+                    nearbySearch: jest.fn()
+                };
+            }),
+
+            RankBy: {
+                PROMINENCE: 'PROMINENCE'
+            }
         },
     },
 };
 
 global.navigator.geolocation = {
-  getCurrentPosition: jest.fn(),
+    getCurrentPosition: jest.fn(),
 };

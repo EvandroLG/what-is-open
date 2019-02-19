@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`places should not render anything when api status was different than ok 1`] = `
+"
+            <ul>
+            
+                        <li class=\\"list__item\\">
+                            <h2 style=\\"background-image: url(undefined)\\" class=\\"list__name\\">
+                                Italian Restaurant
+                            </h2>
+                            <span class=\\"list__address\\">
+                                Stillorgan Road, Dublin
+                            </span>
+                        </li>
+                    
+                        <li class=\\"list__item\\">
+                            <h2 style=\\"background-image: url(undefined)\\" class=\\"list__name\\">
+                                Japonese Restaurant
+                            </h2>
+                            <span class=\\"list__address\\">
+                                Merrion Road, Dublin
+                            </span>
+                        </li>
+                    
+                        <li class=\\"list__item\\">
+                            <h2 style=\\"background-image: url(undefined)\\" class=\\"list__name\\">
+                                Brazilian Restaurant
+                            </h2>
+                            <span class=\\"list__address\\">
+                                Camden Street Lower, Dublin
+                            </span>
+                        </li>
+                    
+            </ul>
+        "
+`;
