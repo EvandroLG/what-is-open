@@ -1,28 +1,25 @@
 template := node_modules/node-simple-template/index.js
 jest := node_modules/jest/bin/jest.js
 eslint := node_modules/eslint/bin/eslint.js
-babel := ./node_modules/.bin/babel
-src_files := $(shell find src/ -name '*.js')
-transpiled_files := $(patsubst src/%,dist/%,$(src_files))
 
 .SILENT:
 
-all: node_modules dist/index.html $(transpiled_files) run
+all: node_modules copy_to_dist build_html run
 
 clean:
-	rm -rf dist/*.js dist/*.map
+	rm -rf dist/*
 
 node_modules: package.json package-lock.json
 	npm install
 
-dist/index.html: index.html
-	$(template) -f index.html -c config.json -d dist/
+build_html:
+	$(template) -f src/index.html -c config.json -d dist/
 
-dist/%: src/%
-	$(babel) $< --out-file $@ --source-maps
+copy_to_dist:
+	cp -R src/ dist/
 
 test:
-	$(jest)
+	$(jest) --coverage
 
 lint:
 	$(eslint) src/ --quiet
