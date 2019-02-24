@@ -27,6 +27,17 @@ describe('places', () => {
     describe('render', () => {
         let list;
 
+        beforeEach(() => {
+            list = document.getElementById('js-list');
+
+            if (!list) {
+                document.body.innerHTML = '<div id="js-list"></div>';
+                list = document.getElementById('js-list');
+            } else {
+                list.innerHTML = '';
+            }
+        });
+
         function verifyRender(statusApi, expectedResult=true) {
             const places = new Places();
             const services = places.placesServices;
@@ -45,17 +56,6 @@ describe('places', () => {
                 expect(html).toBe('');
             }
         }
-
-        beforeEach(() => {
-            list = document.getElementById('js-list');
-
-            if (!list) {
-                document.body.innerHTML = '<div id="js-list"></div>';
-                list = document.getElementById('js-list');
-            } else {
-                list.innerHTML = '';
-            }
-        });
 
         it('should render properly when api has datas to return', () => {
             verifyRender('OK');
