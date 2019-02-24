@@ -1,5 +1,5 @@
-import Places from './places';
-import Form from './form';
+import Places from './places.js';
+import Form from './form.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const places = new Places();
