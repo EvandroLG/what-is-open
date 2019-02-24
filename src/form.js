@@ -10,6 +10,10 @@ export default class Form {
     bindSubmit(callback) {
         const input = this.elements.input;
 
+        this.elements.form.addEventListener('submit', e => {
+            e.preventDefault();
+        });
+
         this.elements.form.addEventListener('keyup', debounce((e) => {
             e.preventDefault();
             callback(input.value);
